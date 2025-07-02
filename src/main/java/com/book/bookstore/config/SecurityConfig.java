@@ -12,15 +12,16 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
+                .csrf().disable() // ❗ 테스트용: CSRF 보호 비활성화
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/**").permitAll()   // 공개할 경로
-                        .anyRequest().authenticated()               // 나머지는 로그인 필요
+                        .requestMatchers("/register", "/login", "/**").permitAll()
+                        .anyRequest().authenticated()
                 )
                 .formLogin(form -> form
-                        .loginPage("/login")   // 커스텀 로그인 페이지가 있으면 지정
-                        .permitAll()
+                        .loginPage("/login").permitAll()
                 )
                 .logout(logout -> logout.permitAll());
+
         return http.build();
     }
 }

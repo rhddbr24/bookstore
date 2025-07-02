@@ -1,10 +1,12 @@
 package com.book.bookstore.user.repository;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
-import org.springframework.stereotype.Repository;
+import org.apache.catalina.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
 
-@Repository
-public class UserRepository {
+import java.util.Optional;
+
+public interface UserRepository extends JpaRepository<User,Integer> {
+    Optional<User> findByUsername(String username);
 
 }
