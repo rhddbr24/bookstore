@@ -1,12 +1,13 @@
 package com.book.bookstore.user.repository;
 
-import org.apache.catalina.User;
+import com.book.bookstore.user.domain.user;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
-public interface UserRepository extends JpaRepository<User,Integer> {
-    Optional<User> findByUsername(String username);
+@Repository
+public interface UserRepository extends JpaRepository<user,Integer> {
+    Optional<user> findByusername(String username);
 
 }
