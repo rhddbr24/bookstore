@@ -39,7 +39,6 @@ public class book {
     @Column(name = "book_regist", nullable = false)
     private Instant book_regist;
 
-    @
 
 
 

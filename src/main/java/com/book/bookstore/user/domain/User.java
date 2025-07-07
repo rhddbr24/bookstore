@@ -15,7 +15,7 @@ import java.time.Instant;
 @Setter
 @Entity
 @Table(name = "user")
-public class user {
+public class User {
     @Id
     @Column(name = "id", nullable = false, length = 20)
     private String id;

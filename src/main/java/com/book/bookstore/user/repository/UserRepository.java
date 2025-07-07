@@ -1,13 +1,13 @@
 package com.book.bookstore.user.repository;
 
-import com.book.bookstore.user.domain.user;
+import com.book.bookstore.user.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
 @Repository
-public interface UserRepository extends JpaRepository<user,Integer> {
-    Optional<user> findByusername(String username);
+public interface UserRepository extends JpaRepository<User,Integer> {
+    User findById(String id);
 
 }
