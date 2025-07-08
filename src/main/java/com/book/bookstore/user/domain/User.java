@@ -18,7 +18,7 @@ import java.time.Instant;
 public class User {
     @Id
     @Column(name = "id", nullable = false, length = 20)
-    private String id;
+    private long id;
 
     @Column(name = "password", nullable = false, length = 20)
     private String password;
@@ -29,8 +29,8 @@ public class User {
     @Column(name = "phone", nullable = false, length = 15)
     private String phone;
 
-    @Column(name = "rank", nullable = false, length = 10)
-    private String rank;
+    @Column(name = "user_rank", nullable = false, length = 10)
+    private String user_rank;
 
     @Column(name = "address", nullable = false, length = 50)
     private String address;

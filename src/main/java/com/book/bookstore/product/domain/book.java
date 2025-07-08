@@ -39,6 +39,20 @@ public class book {
     @Column(name = "book_regist", nullable = false)
     private Instant book_regist;
 
+    @Column(name = "ISBN", nullable = false)
+    private String isbn;
+
+    @Column(name = "book_image", nullable = false)
+    private String book_image;
+
+    @Column(name = "preview", nullable = false)
+    private String preview;
+
+    @Column(name = "price", nullable = false)
+    private double price;
+
+    @Column(name = "")
+
 
 
 
