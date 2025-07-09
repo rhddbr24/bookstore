@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>마이페이지</title>
+</head>
+<body>
+<h1>마이페이지</h1>
+<h2>주문 내역</h2>
+<table>
+    <thead>
+    <tr>
+        <th>주문번호</th>
+        <th>주문일</th>
+        <th>상태</th>
+        <th>금액</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="order : ${orders}">
+        <td th:text="${order.id}"></td>
+        <td th:text="${order.orderDate}"></td>
+        <td th:text="${order.status}"></td>
+        <td th:text="${order.totalAmount}"></td>
+    </tr>
+    </tbody>
+</table>
+<h2>내 리뷰</h2>
+<table>
+    <thead>
+    <tr>
+        <th>책 이름</th>
+        <th>평점</th>
+        <th>내용</th>
+        <th>작성일</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="review : ${reviews}">
+        <td th:text="${review.book.name}"></td>
+        <td th:text="${review.rating}"></td>
+        <td th:text="${review.content}"></td>
+        <td th:text="${review.createdAt}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html> 
