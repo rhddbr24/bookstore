@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>북스토어 메인</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="d-flex flex-column min-vh-100 p-0 m-0">
+    <th:block th:replace="common/header :: *"/>
+    <main class="flex-fill">
+        <div class="text-center my-5">
+            <h1 class="display-4 mb-3">온라인 북스토어에 오신 것을 환영합니다!</h1>
+            <p class="lead">다양한 도서, 빠른 배송, 편리한 주문. 지금 인기 도서를 만나보세요.</p>
+            <div class="d-flex justify-content-center gap-3 my-4">
+                <a class="btn btn-primary btn-lg" th:href="@{/books/user}">도서목록 바로가기</a>
+                <a class="btn btn-outline-secondary btn-lg" th:href="@{/carts/user}">장바구니</a>
+                <a class="btn btn-outline-success btn-lg" th:href="@{/users/mypage}">마이페이지</a>
+            </div>
+        </div>
+        <div class="row mb-5">
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="card-header bg-primary text-white">베스트셀러</div>
+                    <ul class="list-group list-group-flush" th:if="${bestsellers != null}" th:each="book : ${bestsellers}">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span th:text="${book.name}"></span>
+                            <a th:href="@{'/books/user/' + ${book.id}}" class="btn btn-sm btn-outline-primary">상세</a>
+                        </li>
+                    </ul>
+                    <div class="card-body" th:if="${bestsellers == null}">
+                        <p class="text-muted">베스트셀러 데이터가 없습니다.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="card-header bg-success text-white">신간 도서</div>
+                    <ul class="list-group list-group-flush" th:if="${newbooks != null}" th:each="book : ${newbooks}">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span th:text="${book.name}"></span>
+                            <a th:href="@{'/books/user/' + ${book.id}}" class="btn btn-sm btn-outline-success">상세</a>
+                        </li>
+                    </ul>
+                    <div class="card-body" th:if="${newbooks == null}">
+                        <p class="text-muted">신간 도서 데이터가 없습니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <th:block th:replace="common/footer :: *"/>
+    <script src="/js/main.js"></script>
+</body>
+</html>

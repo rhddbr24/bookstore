@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>북스토어</title>
+    <!-- Bootstrap 5 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div th:fragment="*">
+  <style>
+    .header-bar {
+      background: #fff;
+      box-shadow: none;
+      padding: 18px 0;
+      border-bottom: 1px solid #eee;
+    }
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .header-logo {
+      font-size: 2.2rem;
+      font-weight: bold;
+      color: #e9203a;
+      letter-spacing: -2px;
+      text-decoration: none;
+      font-family: 'Segoe UI', 'Apple SD Gothic Neo', sans-serif;
+    }
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .header-btn {
+      border: 1px solid #ddd;
+      background: #fff;
+      border-radius: 12px;
+      padding: 8px 24px;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s;
+      color: #222;
+      outline: none;
+      box-shadow: none;
+      text-decoration: none;
+      font-family: 'Segoe UI', 'Apple SD Gothic Neo', sans-serif;
+    }
+    .header-btn:hover {
+      background: #f7f7f7;
+      color: #e9203a;
+      text-decoration: none;
+    }
+    .header-menu {
+      font-size: 2rem;
+      background: none;
+      border: none;
+      margin-left: 8px;
+      cursor: pointer;
+      outline: none;
+      box-shadow: none;
+      color: #222;
+    }
+    .header-logo:visited, .header-logo:active, .header-logo:focus,
+    .header-btn:visited, .header-btn:active, .header-btn:focus {
+      color: #e9203a;
+      text-decoration: none;
+      outline: none;
+      box-shadow: none;
+    }
+    a.header-btn {
+      color: #222;
+    }
+    a.header-btn:hover {
+      color: #e9203a;
+    }
+  </style>
+  <div class="header-bar">
+    <div class="header-inner">
+      <a class="header-logo" th:href="@{/}">BookStore</a>
+      <div class="header-actions">
+        <span th:if="${session.user == null}">
+          <a class="header-btn" th:href="@{/users/login}">로그인/회원가입</a>
+        </span>
+        <span th:if="${session.user != null}">
+          <a class="header-btn" th:href="@{/users/mypage}">마이페이지</a>
+          <form th:action="@{/users/logout}" method="post" style="display:inline;">
+            <button type="submit" class="header-btn">로그아웃</button>
+          </form>
+        </span>
+        <button class="header-menu">&#9776;</button>
+      </div>
+    </div>
+  </div>
+<div class="container mb-5">
+<!-- 본문 시작 -->

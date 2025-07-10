@@ -1,0 +1,18 @@
+<div th:fragment="*">
+  <div class="header-bar">
+    <div class="header-inner">
+      <a class="header-logo" th:href="@{/}">BookStore</a>
+      <div class="header-actions">
+        <span th:if="${session.user == null}">
+          <a class="header-btn" th:href="@{/users/login}">로그인/회원가입</a>
+        </span>
+        <span th:if="${session.user != null}">
+          <a class="header-btn" th:href="@{/users/mypage}">마이페이지</a>
+          <form th:action="@{/users/logout}" method="post" style="display:inline;">
+            <button type="submit" class="header-btn">로그아웃</button>
+          </form>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,146 @@
+html, body {
+    height: 100%;
+}
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Noto Sans KR', Arial, sans-serif;
+    background: #fafafa;
+    color: #222;
+    margin: 0;
+    padding: 0;
+}
+.main-content {
+    flex: 1 0 auto;
+}
+.footer {
+    flex-shrink: 0;
+}
+
+/* 상단 헤더(로고/타이틀) */
+header {
+    background: #ede7f6;
+    color: #5a3ec8;
+    padding: 32px 0 12px 0;
+    font-size: 2.2rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-align: center;
+    border-radius: 18px;
+    margin: 32px auto 0 auto;
+    max-width: 1100px;
+    box-shadow: 0 2px 12px rgba(90,62,200,0.08);
+}
+
+/* 네비게이션 바 */
+nav {
+    background: #ede7f6;
+    padding: 0 0 0 0;
+    margin: 24px auto 0 auto;
+    max-width: 1100px;
+    border-radius: 18px;
+    box-shadow: 0 2px 12px rgba(90,62,200,0.08);
+}
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0 32px;
+    display: flex;
+    gap: 32px;
+    align-items: center;
+    height: 56px;
+}
+nav ul li {
+    display: inline;
+}
+nav a {
+    color: #5a3ec8;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: background 0.2s, color 0.2s;
+}
+nav a:hover {
+    color: #fff;
+    background: #5a3ec8;
+    text-decoration: none;
+}
+
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 2px 12px rgba(90,62,200,0.08);
+    padding: 48px 40px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 16px;
+    color: #311b92;
+}
+h2 {
+    color: #5a3ec8;
+    margin-top: 32px;
+}
+a {
+    color: #5a3ec8;
+    text-decoration: underline;
+}
+a:hover {
+    color: #311b92;
+}
+.button {
+    background: #5a3ec8;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin: 8px 0;
+    transition: background 0.2s;
+}
+.button:hover {
+    background: #311b92;
+}
+.alert {
+    background: #ffebee;
+    color: #c62828;
+    padding: 10px 16px;
+    border-radius: 6px;
+    margin-bottom: 16px;
+    border: 1px solid #ffcdd2;
+}
+
+/* 반응형 */
+@media (max-width: 700px) {
+    .container, header, nav {
+        max-width: 98vw;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+    .container {
+        padding: 24px 6px;
+    }
+    nav ul {
+        gap: 10px;
+        padding: 0 6px;
+        font-size: 0.98rem;
+    }
+    header {
+        font-size: 1.3rem;
+        padding: 18px 0 8px 0;
+    }
+}
+.footer .container {
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0;
+    max-width: 100%;
+} 

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>회원가입</title>
+</head>
+<body>
+    <th:block th:replace="common/header :: *"/>
+    <div class="d-flex justify-content-center align-items-center" style="min-height:70vh;">
+        <div style="width:400px; background:#fff; border-radius:24px; box-shadow:0 4px 24px 0 rgba(80,80,160,0.08); padding:40px 32px;">
+            <h2 class="mb-4 text-center" style="font-weight:700; color:#2d1582;">회원가입</h2>
+            <form th:action="@{/register}" method="post" id="registerForm" onsubmit="return validateForm();">
+                <div class="mb-3 d-flex">
+                    <input type="text" name="username" id="username" class="form-control" placeholder="아이디" required/>
+                    <button type="button" class="btn btn-outline-secondary ms-2" onclick="checkId()">중복확인</button>
+                </div>
+                <div id="idCheckMsg" class="mb-2 text-danger"></div>
+                <div class="mb-3">
+                    <input type="password" name="password" id="password" class="form-control" placeholder="비밀번호" required/>
+                </div>
+                <div class="mb-3">
+                    <input type="text" name="name" id="name" class="form-control" placeholder="이름" required/>
+                </div>
+                <div class="mb-3">
+                    <input type="email" name="email" id="email" class="form-control" placeholder="이메일" required/>
+                </div>
+                <div class="mb-3">
+                    <input type="text" name="phone" id="phone" class="form-control" placeholder="연락처"/>
+                </div>
+                <div class="mb-3">
+                    <input type="text" name="address" id="address" class="form-control" placeholder="주소"/>
+                </div>
+                <button type="submit" class="btn btn-success w-100">가입하기</button>
+            </form>
+            <div class="d-flex justify-content-between mt-3">
+                <a th:href="@{/users/login}">로그인</a>
+                <a th:href="@{/}">홈으로</a>
+            </div>
+        </div>
+    </div>
+    <th:block th:replace="common/footer :: *"/>
+    <script>
+function checkId() {
+    const username = document.getElementById('username').value;
+    if (!username) {
+        document.getElementById('idCheckMsg').innerText = '아이디를 입력하세요.';
+        return;
+    }
+    fetch('/api/users/check-id?username=' + encodeURIComponent(username))
+        .then(res => res.json())
+        .then(data => {
+            if (data === true) {
+                document.getElementById('idCheckMsg').innerText = '사용 가능한 아이디입니다.';
+                document.getElementById('idCheckMsg').classList.remove('text-danger');
+                document.getElementById('idCheckMsg').classList.add('text-success');
+            } else {
+                document.getElementById('idCheckMsg').innerText = '이미 사용중인 아이디입니다.';
+                document.getElementById('idCheckMsg').classList.remove('text-success');
+                document.getElementById('idCheckMsg').classList.add('text-danger');
+            }
+        });
+}
+
+function validateForm() {
+    const username = document.getElementById('username').value.trim();
+    const password = document.getElementById('password').value.trim();
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+
+    if (!username || !password || !name || !email) {
+        alert('필수 입력값을 모두 입력하세요.');
+        return false;
+    }
+    if (password.length < 4) {
+        alert('비밀번호는 4자 이상이어야 합니다.');
+        return false;
+    }
+    if (!email.includes('@')) {
+        alert('이메일 형식이 올바르지 않습니다.');
+        return false;
+    }
+    return true;
+}
+</script>
+</body>
+</html>

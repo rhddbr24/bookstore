@@ -1,0 +1,61 @@
+/* header.html 스타일 분리 */
+.header-bar {
+  background: #fff;
+  box-shadow: none;
+  padding: 18px 0;
+  border-bottom: 1px solid #eee;
+  max-width: 100%;
+}
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.header-logo {
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: #e9203a;
+  letter-spacing: -2px;
+  text-decoration: none;
+  font-family: 'Segoe UI', 'Apple SD Gothic Neo', sans-serif;
+}
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.header-btn {
+  border: 1px solid #ddd;
+  background: #fff;
+  border-radius: 12px;
+  padding: 8px 24px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+  color: #222;
+  outline: none;
+  box-shadow: none;
+  text-decoration: none;
+  font-family: 'Segoe UI', 'Apple SD Gothic Neo', sans-serif;
+}
+.header-btn:hover {
+  background: #f7f7f7;
+  color: #e9203a;
+  text-decoration: none;
+}
+.header-logo:visited, .header-logo:active, .header-logo:focus,
+.header-btn:visited, .header-btn:active, .header-btn:focus {
+  color: #e9203a;
+  text-decoration: none;
+  outline: none;
+  box-shadow: none;
+}
+a.header-btn {
+  color: #222;
+}
+a.header-btn:hover {
+  color: #e9203a;
+} 

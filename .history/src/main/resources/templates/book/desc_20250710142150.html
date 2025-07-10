@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>도서 상세</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <th:block th:replace="common/header :: *"/>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h2 class="card-title mb-3" th:text="${book.name}">책 제목</h2>
+                    <h5 class="card-subtitle mb-2 text-muted">저자: <span th:text="${book.author}"></span></h5>
+                    <p class="mb-1"><strong>출판사:</strong> <span th:text="${book.publisher}"></span></p>
+                    <p class="mb-1"><strong>가격:</strong> <span th:text="${book.price}"></span>원</p>
+                    <p class="mb-3"><strong>설명:</strong> <span th:text="${book.description}"></span></p>
+                    <div class="d-flex gap-2">
+                        <form th:action="@{'/carts/user/add/' + ${book.id}}" method="post" class="d-inline">
+                            <button type="submit" class="btn btn-success">장바구니 담기</button>
+                        </form>
+                        <form th:action="@{'/orders/user/direct/' + ${book.id}}" method="post" class="d-inline">
+                            <button type="submit" class="btn btn-primary">바로구매</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- 리뷰 섹션 예시 -->
+            <div class="card">
+                <div class="card-header bg-light">리뷰</div>
+                <ul class="list-group list-group-flush" th:if="${reviews != null}" th:each="review : ${reviews}">
+                    <li class="list-group-item">
+                        <strong th:text="${review.userName}">사용자</strong> <span class="text-muted small" th:text="${review.createdAt}"></span><br/>
+                        <span th:text="${review.content}"></span>
+                    </li>
+                </ul>
+                <div class="card-body" th:if="${reviews == null}">
+                    <p class="text-muted">등록된 리뷰가 없습니다.</p>
+                </div>
+                <!-- 리뷰 작성 폼 예시 -->
+                <div class="card-footer">
+                    <form th:action="@{'/reviews/user/add/' + ${book.id}}" method="post">
+                        <div class="input-group">
+                            <input type="text" name="content" class="form-control" placeholder="리뷰를 입력하세요" required>
+                            <button class="btn btn-outline-primary" type="submit">등록</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <th:block th:replace="common/footer :: *"/>
+    <script src="/js/main.js"></script>
+</body>
+</html>

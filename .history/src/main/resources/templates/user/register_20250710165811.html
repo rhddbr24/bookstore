@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>회원가입</title>
+</head>
+<body>
+    <th:block th:replace="common/header :: *"/>
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <h2 class="mb-4 text-center">회원가입</h2>
+            <form th:action="@{/register}" method="post">
+                <div class="mb-3">
+                    <input type="text" name="username" class="form-control" placeholder="아이디" required/>
+                </div>
+                <div class="mb-3">
+                    <input type="password" name="password" class="form-control" placeholder="비밀번호" required/>
+                </div>
+                <div class="mb-3">
+                    <input type="text" name="name" class="form-control" placeholder="이름" required/>
+                </div>
+                <div class="mb-3">
+                    <input type="email" name="email" class="form-control" placeholder="이메일" required/>
+                </div>
+                <div class="mb-3">
+                    <input type="text" name="phone" class="form-control" placeholder="연락처"/>
+                </div>
+                <div class="mb-3">
+                    <input type="text" name="address" class="form-control" placeholder="주소"/>
+                </div>
+                <button type="submit" class="btn btn-success w-100">가입하기</button>
+            </form>
+            <div class="d-flex justify-content-between mt-3">
+                <a th:href="@{/users/login}">로그인</a>
+                <a th:href="@{/}">홈으로</a>
+            </div>
+        </div>
+    </div>
+    <th:block th:replace="common/footer :: *"/>
+</body>
+</html>
